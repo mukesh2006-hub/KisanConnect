@@ -82,4 +82,13 @@ def create_order(payload: OrderCreate, db: Session = Depends(get_db)):
 
 @app.post("/route/optimize", response_model=RouteResponse)
 def route(payload: RouteRequest):
-    return optimize_route(payload.stops, payload.vehicle_capacity_kg)
+    try:
+        return optimize_route(
+            payload.stops,
+            payload.vehicle_capacity_kg
+        )
+    except ValueError as exc:
+        raise HTTPException(
+            status_code=400,
+            detail=str(exc)
+        )
