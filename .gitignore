@@ -2,3 +2,5 @@ backend/.venv/
 backend/**/__pycache__/
 backend/kisanconnect.db
 frontend/node_modules/
+
+kisanconnect.db
