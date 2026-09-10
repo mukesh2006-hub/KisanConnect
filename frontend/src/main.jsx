@@ -47,7 +47,7 @@ function App() {
     rec.onresult = e => {
       const text = e.results[0][0].transcript
       setVoiceText(text)
-      const qty = text.match(/(\d+)\s*(kg|किलो)/i)
+      const qty = text.match(/(\d+(?:\.\d+)?)\s*(kg|kilo|kilos|kilogram|kilograms|किलो|kgs)?/i)
       if (qty) setQuantity(Number(qty[1]))
     }
     rec.start()
@@ -133,7 +133,7 @@ function App() {
           <>
             <section className="hero">
               <div>
-                <p className="eyebrow">SIH26033 • Tomato pilot</p>
+                <p className="eyebrow">SIH26033  </p>
                 <h1>Sell directly. Know your fair price.</h1>
                 <p>List produce by voice or text and get an explainable AI price recommendation.</p>
                 <button className="primary" onClick={()=>setTab("sell")}>Sell Tomatoes →</button>
